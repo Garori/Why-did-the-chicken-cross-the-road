@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo02ua5kudw6h"]
+
+[ext_resource type="Script" path="res://Scripts/fusca.gd" id="1_0i08f"]
+[ext_resource type="Texture2D" uid="uid://h6r30ssuvmyj" path="res://Assets/Images/fusca-Sheet.png" id="2_dxlne"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcxp7"]
+atlas = ExtResource("2_dxlne")
+region = Rect2(0, 0, 577, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knuak"]
+atlas = ExtResource("2_dxlne")
+region = Rect2(577, 0, 577, 433)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4850"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wcxp7")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_knuak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Fusca" type="CharacterBody2D"]
+script = ExtResource("1_0i08f")
+metadata/tipo = 0
+
+[node name="fuscaSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_k4850")
+frame_progress = 0.918423
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(27, 39, 69, 42, 74, 28, 84, 22, 73, -2, 35, -17, 21, -36, -44, -35, -67, -4, -86, 19, -75, 29, -67, 40, 20, 48)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

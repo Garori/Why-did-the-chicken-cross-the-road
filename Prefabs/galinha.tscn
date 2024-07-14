@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://c45jy0a7n8nem"]
+
+[ext_resource type="Script" path="res://Scripts/galinha.gd" id="1_37wx5"]
+[ext_resource type="Texture2D" uid="uid://dtvgg2me15f1n" path="res://Assets/Images/chicken-poster-Sheet.png" id="2_vf46l"]
+[ext_resource type="AudioStream" uid="uid://bria4d11r0mts" path="res://Assets/Music/Chicken Screaming SFX (192) (mp3cut.net).mp3" id="3_652in"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vmv7"]
+atlas = ExtResource("2_vf46l")
+region = Rect2(0, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g028b"]
+atlas = ExtResource("2_vf46l")
+region = Rect2(480, 0, 480, 480)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hysei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vmv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g028b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x01pv"]
+radius = 38.0
+
+[node name="Galinha" type="CharacterBody2D"]
+script = ExtResource("1_37wx5")
+
+[node name="Chicken-Poster" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.160938, 0.160938)
+sprite_frames = SubResource("SpriteFrames_hysei")
+frame_progress = 0.0838091
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x01pv")
+
+[node name="cocó" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_652in")
+volume_db = -2.0

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://st8yw6rqrfq4"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_5hxw1"]
+[ext_resource type="Texture2D" uid="uid://6rpi46fqr7hn" path="res://Assets/Images/road.jpg" id="1_fce5a"]
+[ext_resource type="PackedScene" uid="uid://c45jy0a7n8nem" path="res://Prefabs/galinha.tscn" id="2_xflih"]
+[ext_resource type="PackedScene" uid="uid://bo02ua5kudw6h" path="res://Prefabs/fusca.tscn" id="3_o8w83"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5hxw1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_fce5a")
+expand_mode = 1
+
+[node name="Galinha" parent="." instance=ExtResource("2_xflih")]
+position = Vector2(668, 665)
+
+[node name="Fusca1" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(103, 535)
+
+[node name="Fusca" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(902, 316)
+
+[node name="Fusca2" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(705, 534)
+
+[node name="Fusca3" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(1020, 535)
+
+[node name="Fusca4" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(250, 318)
+
+[node name="Fusca5" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(709, 314)
+
+[node name="Fusca6" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(67, 319)
+
+[node name="Fusca7" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(406, 422)
+
+[node name="Fusca8" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(539, 209)
+
+[node name="Fusca9" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(1203, 198)
+
+[node name="Fusca10" parent="." instance=ExtResource("3_o8w83")]
+position = Vector2(1026, 426)

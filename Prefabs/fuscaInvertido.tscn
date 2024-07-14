@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://mjre5f1lsdiv"]
+
+[ext_resource type="Script" path="res://Scripts/fusca.gd" id="1_xq75j"]
+[ext_resource type="Texture2D" uid="uid://c7owo22ux2t63" path="res://Assets/Images/fusca.webp" id="2_uaat7"]
+
+[node name="Fusca" type="CharacterBody2D"]
+script = ExtResource("1_xq75j")
+
+[node name="Fusca" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_uaat7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(27, 39, 69, 42, 74, 28, 84, 22, 73, -2, 35, -17, 21, -36, -44, -35, -67, -4, -86, 19, -75, 29, -67, 40, 20, 48)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://st8yw6rqrfq4"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_8itwu"]
+[ext_resource type="Texture2D" uid="uid://6rpi46fqr7hn" path="res://Assets/Images/road.jpg" id="2_r1i4n"]
+[ext_resource type="Script" path="res://Scripts/background.gd" id="3_x27j3"]
+[ext_resource type="PackedScene" uid="uid://c45jy0a7n8nem" path="res://Prefabs/galinha.tscn" id="4_ool3x"]
+[ext_resource type="PackedScene" uid="uid://bo02ua5kudw6h" path="res://Prefabs/fusca.tscn" id="5_2trav"]
+[ext_resource type="AudioStream" uid="uid://cgaq6opsxa6oq" path="res://Assets/Music/galinha_main_theme.wav" id="6_xf7fy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_37tri"]
+distance = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn8s3"]
+size = Vector2(1279, 98)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8itwu")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(658, 721)
+shape = SubResource("WorldBoundaryShape2D_37tri")
+one_way_collision_margin = 4.5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_r1i4n")
+expand_mode = 1
+script = ExtResource("3_x27j3")
+
+[node name="Area2D" type="Area2D" parent="TextureRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D"]
+position = Vector2(639.5, 47)
+shape = SubResource("RectangleShape2D_vn8s3")
+
+[node name="Galinha" parent="." instance=ExtResource("4_ool3x")]
+position = Vector2(668, 665)
+
+[node name="Fusca" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(902, 316)
+
+[node name="Fusca1" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(103, 535)
+
+[node name="Fusca2" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(705, 534)
+
+[node name="Fusca3" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(1020, 535)
+
+[node name="Fusca4" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(250, 318)
+
+[node name="Fusca5" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(709, 314)
+
+[node name="Fusca6" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(67, 319)
+
+[node name="Fusca7" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(406, 422)
+metadata/tipo = 1
+
+[node name="Fusca8" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(539, 209)
+metadata/tipo = 1
+
+[node name="Fusca9" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(1203, 198)
+metadata/tipo = 1
+
+[node name="Fusca10" parent="." instance=ExtResource("5_2trav")]
+position = Vector2(1026, 426)
+metadata/tipo = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xf7fy")
+autoplay = true
+mix_target = 1
+
+[connection signal="body_entered" from="TextureRect/Area2D" to="TextureRect" method="_on_area_2d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

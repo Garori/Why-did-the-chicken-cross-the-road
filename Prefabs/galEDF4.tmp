@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c45jy0a7n8nem"]
+
+[ext_resource type="Script" path="res://Scripts/galinha.gd" id="1_37wx5"]
+[ext_resource type="Texture2D" uid="uid://ci1ds36g222b5" path="res://Assets/Images/chicken-poster.png" id="1_mbrne"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x01pv"]
+radius = 38.0
+
+[node name="Galinha" type="CharacterBody2D"]
+script = ExtResource("1_37wx5")
+
+[node name="Chicken-poster" type="Sprite2D" parent="."]
+scale = Vector2(0.170834, 0.170834)
+texture = ExtResource("1_mbrne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x01pv")

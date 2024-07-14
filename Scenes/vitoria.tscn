@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcsonwgdcxv44"]
+
+[ext_resource type="Script" path="res://Scripts/vitoria.gd" id="1_6k4p3"]
+[ext_resource type="PackedScene" uid="uid://c45jy0a7n8nem" path="res://Prefabs/galinha.tscn" id="1_ad5rp"]
+[ext_resource type="Script" path="res://Scenes/jogar_de_novo.gd" id="2_e3017"]
+[ext_resource type="AudioStream" uid="uid://c3jstlavinfr0" path="res://Assets/Music/galinha_vitoira.wav" id="4_6cqn1"]
+[ext_resource type="Texture2D" uid="uid://h6r30ssuvmyj" path="res://Assets/Images/fusca-Sheet.png" id="5_6x587"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcxp7"]
+atlas = ExtResource("5_6x587")
+region = Rect2(0, 0, 577, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knuak"]
+atlas = ExtResource("5_6x587")
+region = Rect2(577, 0, 577, 433)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jd18r"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wcxp7")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_knuak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Vitoria" type="Node2D"]
+script = ExtResource("1_6k4p3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.937255, 0.529412, 0.670588, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 64
+text = "Galinha"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Galinha" parent="." instance=ExtResource("1_ad5rp")]
+position = Vector2(386, 591)
+
+[node name="Galinha2" parent="." instance=ExtResource("1_ad5rp")]
+position = Vector2(928, 587)
+
+[node name="Galinha3" parent="." instance=ExtResource("1_ad5rp")]
+position = Vector2(678, 199)
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 575.0
+offset_top = 658.0
+offset_right = 708.0
+offset_bottom = 709.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Jogar Novamente!!!1!"
+script = ExtResource("2_e3017")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6cqn1")
+volume_db = 15.0
+autoplay = true
+
+[node name="paiDosFuscas" type="Node" parent="."]
+
+[node name="fuscaSprite" type="AnimatedSprite2D" parent="paiDosFuscas"]
+position = Vector2(283, 231)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_jd18r")
+
+[node name="fuscaSprite2" type="AnimatedSprite2D" parent="paiDosFuscas"]
+position = Vector2(676, 78)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_jd18r")
+
+[node name="fuscaSprite3" type="AnimatedSprite2D" parent="paiDosFuscas"]
+position = Vector2(662, 475)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_jd18r")
+
+[node name="fuscaSprite4" type="AnimatedSprite2D" parent="paiDosFuscas"]
+position = Vector2(987, 199)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_jd18r")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
